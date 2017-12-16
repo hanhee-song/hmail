@@ -2,6 +2,7 @@ import * as UserApiUtil from '../util/user_api/util';
 
 export const RECEIVE_USER = "RECEIVE_USER";
 export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
+export const CLEAR_USER_ERRORS = "CLEAR_USER_ERRORS";
 
 export const receiveUser = (user) => {
   return {
@@ -16,6 +17,12 @@ export const receiveUserErrors = (errors) => {
     errors,
   };
 };
+
+export const clearUserErrors = () => {
+  return {
+    type: CLEAR_USER_ERRORS,
+  }
+}
 
 export const fetchUser = (id) => {
   return (dispatch) => {
