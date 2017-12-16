@@ -1,4 +1,4 @@
-import * as UserApiUtil from '../util/user_api/util';
+import * as UserApiUtil from '../util/user_api_util';
 
 export const RECEIVE_USER = "RECEIVE_USER";
 export const RECEIVE_USER_ERRORS = "RECEIVE_USER_ERRORS";
@@ -21,8 +21,8 @@ export const receiveUserErrors = (errors) => {
 export const clearUserErrors = () => {
   return {
     type: CLEAR_USER_ERRORS,
-  }
-}
+  };
+};
 
 export const fetchUser = (id) => {
   return (dispatch) => {
