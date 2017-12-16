@@ -16,13 +16,17 @@ ActiveRecord::Schema.define(version: 20171216180850) do
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
-    t.string "username", null: false
+    t.string "email", null: false
+    t.string "fname", null: false
+    t.string "lname", null: false
     t.string "password_digest", null: false
     t.string "auth_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["auth_token"], name: "index_users_on_auth_token"
-    t.index ["username"], name: "index_users_on_username", unique: true
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["fname"], name: "index_users_on_fname"
+    t.index ["lname"], name: "index_users_on_lname"
   end
 
 end
