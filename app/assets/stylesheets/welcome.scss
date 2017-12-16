@@ -1,0 +1,43 @@
+.welcome {
+  font-family: "Roboto", sans-serif;
+  color: #555;
+}
+
+.welcome-navbar {
+  display: flex;
+  justify-content: space-between;
+  // align-items: center;
+  height: 65px;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+}
+
+.welcome-navbar a {
+  display: inline-block;
+}
+
+.welcome-navbar-right a {
+  height: 65px;
+  padding: 24px 36px;
+  font-size: 15px;
+  line-height: 18px;
+}
+
+.welcome-create-button {
+  background-color: #dd5347;
+  color: #fff;
+}
+
+.welcome-navbar-logo {
+  font-size: 25px;
+  padding: 18px;
+  color: #777;
+  font-weight: 300;
+}
+
+.welcome-navbar-logo .fa {
+  font-size: 29px;
+  margin-right: 5px;
+  color: #dd5347;
+}

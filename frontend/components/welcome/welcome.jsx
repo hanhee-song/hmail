@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 class Welcome extends React.Component {
   render () {
     return (
-      <div>
+      <div className="welcome">
         <Navbar />
         Welcome to Hmail
         <Link to="/SignUp">CREATE AN ACCOUNT</Link>
