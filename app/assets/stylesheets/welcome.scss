@@ -54,16 +54,19 @@
   padding-left: 16px;
 }
 
-.welcome-navbar-logo {
-  font-size: 25px;
+.welcome-navbar-left .navbar-logo {
   padding: 18px;
+}
+
+.navbar-logo {
+  font-size: 25px;
   color: #777;
   font-weight: 300;
   display: flex;
   align-items: flex-end;
 }
 
-.welcome-navbar-logo .fa {
+.navbar-logo .fa {
   font-size: 29px;
   margin-right: 5px;
   color: #dd5347;

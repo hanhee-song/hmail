@@ -8,7 +8,7 @@ class Navbar extends React.Component {
         <div className="welcome-navbar">
           <div className="welcome-navbar-left">
             <Link
-              className="welcome-navbar-logo"
+              className="navbar-logo"
               to="/">
               <i class="fa fa-envelope-o" aria-hidden="true"></i>
               <div>Hmail</div>
