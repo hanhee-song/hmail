@@ -10,7 +10,7 @@ class Navbar extends React.Component {
             <Link
               className="navbar-logo"
               to="/">
-              <i class="fa fa-envelope-o" aria-hidden="true"></i>
+              <i className="fa fa-envelope-o" aria-hidden="true"></i>
               <div>Hmail</div>
             </Link>
           </div>
