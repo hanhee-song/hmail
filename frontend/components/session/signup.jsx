@@ -8,8 +8,18 @@ class Signup extends React.Component {
     return (
       <div className="signup">
         <SignupNavbar />
-        <div>
-          This is a signup page
+        <div className="signup-main">
+          <div className="signup-main-header">
+            Create your Hmail Account
+          </div>
+          <div className="signup-main-body">
+            <div className="signup-main-left">
+              
+            </div>
+            <div className="signup-main-right">
+              
+            </div>
+          </div>
         </div>
       </div>
     );
