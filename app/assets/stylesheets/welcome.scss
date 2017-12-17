@@ -3,25 +3,18 @@
   color: #555;
 }
 
-.welcome-navbar {
-  display: flex;
-  justify-content: space-between;
-  // align-items: center;
-  height: 65px;
-  -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
-  -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
-  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
-}
-
-.welcome-navbar a {
-  display: inline-block;
-}
-
-.welcome-navbar-right a {
+.welcome-button {
   height: 65px;
   padding: 24px 36px;
   font-size: 15px;
   line-height: 18px;
+  transition: color .3s ease;
+  -webkit-transition: color .3s ease;
+  -moz-transition: color .3s ease;
+}
+
+.welcome-button.hoverable:hover {
+  color: #dd5347;
 }
 
 .welcome-create-button {
@@ -29,15 +22,71 @@
   color: #fff;
 }
 
+.welcome-create-button::after {
+  content: "CREATE AN ACCOUNT";
+}
+
+@media (max-width: 484px) {
+  .welcome-create-button::after {
+    content: "GET GMAIL";
+  }
+}
+
+// NAVBAR =============================
+
+.welcome-navbar {
+  display: flex;
+  justify-content: space-between;
+  height: 65px;
+  -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+  -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+  box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.4);
+}
+
+.welcome-navbar-right {
+  display: flex;
+  justify-content: flex-end;
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+
+.welcome-navbar-right a:first-of-type {
+  padding-left: 16px;
+}
+
 .welcome-navbar-logo {
   font-size: 25px;
   padding: 18px;
   color: #777;
   font-weight: 300;
+  display: flex;
+  align-items: flex-end;
 }
 
 .welcome-navbar-logo .fa {
   font-size: 29px;
   margin-right: 5px;
   color: #dd5347;
+}
+
+// WELCOME 1 =========================
+
+.welcome-1-left {
+  width: 30%;
+  min-width: 250px;
+  margin-left: 5%;
+  margin-top: calc(50px + 5%);
+  color: #777;
+  font-size: 42px;
+  line-height: 54px;
+}
+
+.welcome-1-text {
+  display: inline;
+  float: left;
+  margin-bottom: calc(30px + 2%);
+}
+
+.welcome-1-left a {
+  float: left;
 }

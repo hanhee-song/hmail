@@ -9,13 +9,18 @@ class Navbar extends React.Component {
           <div className="welcome-navbar-left">
             <Link
               className="welcome-navbar-logo"
-              to="/"><i class="fa fa-envelope-o" aria-hidden="true"></i>Hmail</Link>
+              to="/">
+              <i class="fa fa-envelope-o" aria-hidden="true"></i>
+              <div>Hmail</div>
+            </Link>
           </div>
           <div className="welcome-navbar-right">
-            <Link to="/signin">SIGN IN</Link>
             <Link
-              className="welcome-create-button"
-              to="/SignUp">CREATE AN ACCOUNT</Link>
+              className="welcome-button hoverable"
+              to="/signin">SIGN IN</Link>
+            <Link
+              className="welcome-button welcome-create-button"
+              to="/SignUp"></Link>
           </div>
         </div>
       </div>

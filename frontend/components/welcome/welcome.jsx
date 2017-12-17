@@ -8,8 +8,17 @@ class Welcome extends React.Component {
     return (
       <div className="welcome">
         <Navbar />
-        Welcome to Hmail
-        <Link to="/SignUp">CREATE AN ACCOUNT</Link>
+        <div className="welcome-1">
+          <div className="welcome-1-left">
+            <div className="welcome-1-text">
+              Welcome to Hmail
+            </div>
+            <br />
+            <Link
+              className="welcome-button welcome-create-button"
+              to="/SignUp"></Link>
+          </div>
+        </div>
       </div>
     );
   }
