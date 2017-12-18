@@ -10,6 +10,9 @@ class Signup extends React.Component {
       fname: "",
       lname: "",
       email: "",
+      password1: "",
+      password2: "",
+      email2: "",
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -108,10 +111,12 @@ class Signup extends React.Component {
                   </label>
                 </div>
                 
-                <input
-                  className="signup-navbar-signin-button next-step"
-                  type="submit"
-                  value="Next Step" />
+                <div className="next-step-wrapper">
+                  <input
+                    className="signup-navbar-signin-button next-step"
+                    type="submit"
+                    value="Next Step" />
+                </div>
               </form>
               
             </div>

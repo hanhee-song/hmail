@@ -91,7 +91,7 @@
 // FORM ================
 
 .signup-input-section {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 .signup-label {
@@ -100,7 +100,7 @@
 }
 
 .signup-input {
-  margin-top: 5px;
+  margin-top: 8px;
   font-size: 13px;
   padding: 5px 8px;
   border: 1px solid #d9d9d9;
@@ -140,15 +140,21 @@
 .signup-email-tag {
   position: absolute;
   right: 9px;
-  top: 27px;
+  top: 30px;
   font-weight: 400;
   color: #888;
 }
+
 .signup-navbar-signin-button.next-step {
   font-size: 11px;
   font-weight: 700;
-  float: right;
-  margin-top: 10px;
   line-height: 27px;
   height: 29px;
+}
+
+.next-step-wrapper {
+  border: 1px solid #3079ed;
+  margin-top: 10px;
+  float: right;
+  border-radius: 3px;
 }
