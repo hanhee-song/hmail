@@ -42,6 +42,7 @@
   padding: 0 13px;
   font-size: 13px;
 }
+
 .signup-navbar-signin-button:hover {
   background-image: -webkit-linear-gradient(top,#4d90fe,#357ae8);
 }
@@ -85,4 +86,69 @@
   width: 400px;
   padding: 30px;
   background-color: #f1f1f1;
+}
+
+// FORM ================
+
+.signup-input-section {
+  margin-bottom: 15px;
+}
+
+.signup-label {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.signup-input {
+  margin-top: 5px;
+  font-size: 13px;
+  padding: 5px 8px;
+  border: 1px solid #d9d9d9;
+  border-top: 1px solid #c0c0c0;
+}
+
+.signup-input.full {
+  width: 340px;
+}
+
+.signup-input:hover {
+  -webkit-box-shadow: inset 0px 0px 1px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: inset 0px 0px 1px 0px rgba(0,0,0,0.3);
+  box-shadow: inset 0px 0px 1px 0px rgba(0,0,0,0.3);
+}
+
+.signup-input:focus {
+  border: 1px solid #3079ed;
+  -webkit-box-shadow: inset 0px 0px 1px 0px rgba(0,0,0,0.3);
+  -moz-box-shadow: inset 0px 0px 1px 0px rgba(0,0,0,0.3);
+  box-shadow: inset 0px 0px 1px 0px rgba(0,0,0,0.3);
+}
+
+.signup-names {
+  display: flex;
+  justify-content: space-between;
+}
+
+.signup-input.name {
+  width: 165px;
+}
+
+.signup-label.email {
+  position: relative;
+}
+
+.signup-email-tag {
+  position: absolute;
+  right: 9px;
+  top: 27px;
+  font-weight: 400;
+  color: #888;
+}
+.signup-navbar-signin-button.next-step {
+  font-size: 11px;
+  font-weight: 700;
+  float: right;
+  margin-top: 10px;
+  line-height: 27px;
+  height: 29px;
 }

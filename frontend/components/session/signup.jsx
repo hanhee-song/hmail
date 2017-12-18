@@ -4,6 +4,22 @@ import { Link } from 'react-router-dom';
 import SignupNavbar from './signup_navbar.jsx';
 
 class Signup extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      fname: "",
+      lname: "",
+      email: "",
+    };
+    this.handleChange = this.handleChange.bind(this);
+  }
+  
+  handleChange(field) {
+    return (e) => {
+      this.setState({ [field]: e.target.value });
+    };
+  }
+  
   render () {
     return (
       <div className="signup">
@@ -12,11 +28,91 @@ class Signup extends React.Component {
           <div className="signup-main-header">
             Create your Hmail Account
           </div>
+          
           <div className="signup-main-body">
             <div className="signup-main-left">
-              
             </div>
             <div className="signup-main-right">
+              
+              <form>
+                <div className="signup-input-section">
+                  <label className="signup-label">
+                    Name
+                  </label>
+                  <div className="signup-names">
+                    <input
+                      className="signup-input name"
+                      type="text"
+                      onChange={this.handleChange("fname")}
+                      value={this.state.fname}
+                      placeholder="First"/>
+                    <input
+                      className="signup-input name"
+                      type="text"
+                      onChange={this.handleChange("lname")}
+                      value={this.state.lname}
+                      placeholder="Last"/>
+                  </div>
+                </div>
+                
+                <div className="signup-input-section">
+                  <label className="signup-label email">
+                    Choose your username
+                    <br />
+                    <input
+                      className="signup-input full"
+                      type="text"
+                      onChange={this.handleChange("email")}
+                      value={this.state.email}
+                      placeholder=""/>
+                    <div className="signup-email-tag">@hmail.com</div>
+                  </label>
+                </div>
+                
+                <div className="signup-input-section">
+                  <label className="signup-label">
+                    Create a password
+                    <br />
+                    <input
+                      className="signup-input full"
+                      type="password"
+                      onChange={this.handleChange("password1")}
+                      value={this.state.password1}
+                      placeholder=""/>
+                  </label>
+                </div>
+                
+                <div className="signup-input-section">
+                  <label className="signup-label">
+                    Confirm your password
+                    <br />
+                    <input
+                      className="signup-input full"
+                      type="password"
+                      onChange={this.handleChange("password2")}
+                      value={this.state.password2}
+                      placeholder=""/>
+                  </label>
+                </div>
+                
+                <div className="signup-input-section">
+                  <label className="signup-label">
+                    Your current email address
+                    <br />
+                    <input
+                      className="signup-input full"
+                      type="text"
+                      onChange={this.handleChange("email2")}
+                      value={this.state.email2}
+                      placeholder=""/>
+                  </label>
+                </div>
+                
+                <input
+                  className="signup-navbar-signin-button next-step"
+                  type="submit"
+                  value="Next Step" />
+              </form>
               
             </div>
           </div>
