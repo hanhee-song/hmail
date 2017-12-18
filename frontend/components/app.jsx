@@ -3,14 +3,14 @@ import { Route } from 'react-router-dom';
 import { Switch } from 'react-router';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Welcome from './welcome/welcome';
-import Signup from './session/signup';
+import SignupContainer from './session/signup_container';
 
 const App = () => {
   return (
     <section>
       <Switch>
         <AuthRoute
-          component={Signup}
+          component={SignupContainer}
           path="/SignUp"/>
         <AuthRoute
           component={Welcome}

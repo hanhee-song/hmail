@@ -15,12 +15,23 @@ class Signup extends React.Component {
       email2: "",
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
   
   handleChange(field) {
     return (e) => {
       this.setState({ [field]: e.target.value });
     };
+  }
+  
+  handleSubmit(e) {
+    e.preventDefault();
+    this.props.signup({
+      fname: this.state.fname,
+      lname: this.state.lname,
+      email: this.state.email,
+      password: this.state.password1,
+    });
   }
   
   render () {
@@ -37,7 +48,7 @@ class Signup extends React.Component {
             </div>
             <div className="signup-main-right">
               
-              <form>
+              <form onSubmit={this.handleSubmit}>
                 <div className="signup-input-section">
                   <label className="signup-label">
                     Name
