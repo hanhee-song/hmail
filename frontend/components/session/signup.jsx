@@ -31,7 +31,9 @@ class Signup extends React.Component {
       lname: this.state.lname,
       email: this.state.email,
       password: this.state.password1,
-    });
+    }).then(
+        success => this.props.history.push("/inbox")
+      );
   }
   
   render () {
@@ -126,7 +128,7 @@ class Signup extends React.Component {
                   <input
                     className="signup-navbar-signin-button next-step"
                     type="submit"
-                    value="Next Step" />
+                    value="Sign Up" />
                 </div>
               </form>
               
