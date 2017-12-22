@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 class Signin extends React.Component {
   constructor(props) {
@@ -28,8 +29,15 @@ class Signin extends React.Component {
     return (
         <div className="signin">
           <div className="signin-main">
-            <form>
-              inside form
+            <form className="signin-form">
+              <Link
+                className="navbar-logo"
+                to="/">
+                <i className="fa fa-envelope-o" aria-hidden="true"></i>
+                <div>Hmail</div>
+              </Link>
+              <div className="signin-bigtext">Sign In</div>
+              <div className="signin-smalltext">to continue to Hmail</div>
             <input
               className="signin-input email"
               onChange={this.handleChange("email")}

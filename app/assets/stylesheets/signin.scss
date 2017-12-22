@@ -7,6 +7,7 @@
   background: -webkit-linear-gradient(-45deg, #ffffff 0%,#e5e5e5 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(135deg, #ffffff 0%,#e5e5e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  font-family: "Roboto", sans-serif;
 }
 
 .signin-main {
@@ -14,7 +15,27 @@
   width: 450px;
   height: 500px;
   margin: 0 auto;
+  padding: 50px 40px;
   -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
   -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
   box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
+}
+
+.signin-form .navbar-logo {
+  font-size: 20px;
+  color: #333;
+}
+
+.signin-form .navbar-logo .fa {
+  font-size: 22px;
+}
+
+.signin-bigtext {
+  margin-top: 26px;
+  font-size: 23px;
+}
+
+.signin-smalltext {
+  margin-top: 7px;
+  font-size: 14px;
 }
