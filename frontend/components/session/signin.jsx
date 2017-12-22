@@ -9,6 +9,8 @@ class Signin extends React.Component {
       email: "",
       password: "",
       validatingEmail: false,
+      submittedEmail: "",
+      errors: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -18,31 +20,43 @@ class Signin extends React.Component {
   }
   
   componentWillReceiveProps(nextProps) {
-    // This assumes that no actions are made between starting an email validation
     if (this.state.validatingEmail) {
-      
-      if (this.props.users) {
-        
-      } else if (this.props.errors[0]) {
-        
+      if (Object.keys(nextProps.users).includes(this.state.submittedEmail)) {
+        this.props.history.push("/signin/pwd");
+        this.setState({ validatingEmail: false });
+        this.props.clearSessionErrors();
+        this.props.clearUserErrors();
+      } else if (nextProps.errors[0]) {
+        this.setState({ validatingEmail: false });
+        // Do nothing?
       }
-      
-      this.setState({ validatingEmail: false });
-      // if (!) {
-      //
-      // }
     }
   }
   
   handleSubmit(e) {
     e.preventDefault();
+    
+    // ERROR CLEARING
+    if (this.props.location.pathname === "/signin/identifier") {
+      if (this.state.email) {
+        this.props.clearSessionErrors();
+      } else {
+        this.props.clearUserErrors();
+      }
+    }
+    
+    
+    
     if (this.props.location.pathname === "/signin/identifier") {
       const email = parseEmail(this.state.email);
       if (email) {
         this.props.validateEmail(email);
-        this.setState({ validatingEmail: true });
+        this.setState({
+          validatingEmail: true,
+          submittedEmail: email,
+         });
       } else {
-        // THROW ERROR: "ENTER AN EMAIL"
+        this.props.receiveSessionErrors(["Enter an email"]);
       }
     } else if (this.props.location.pathname === "/signin/pwd") {
       this.props.login({
@@ -85,6 +99,7 @@ class Signin extends React.Component {
               <input className="signin-button"
                 type="submit"
                 value="NEXT" />
+              {this.props.errors[0]}
               
               <input
                 className="signin-input password"
