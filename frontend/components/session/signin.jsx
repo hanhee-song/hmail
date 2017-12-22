@@ -18,8 +18,19 @@ class Signin extends React.Component {
   }
   
   componentWillReceiveProps(nextProps) {
+    // This assumes that no actions are made between starting an email validation
     if (this.state.validatingEmail) {
-      debugger;
+      
+      if (this.props.users) {
+        
+      } else if (this.props.errors[0]) {
+        
+      }
+      
+      this.setState({ validatingEmail: false });
+      // if (!) {
+      //
+      // }
     }
   }
   
@@ -27,8 +38,12 @@ class Signin extends React.Component {
     e.preventDefault();
     if (this.props.location.pathname === "/signin/identifier") {
       const email = parseEmail(this.state.email);
-      this.props.validateEmail(email);
-      this.setState({ validatingEmail: true });
+      if (email) {
+        this.props.validateEmail(email);
+        this.setState({ validatingEmail: true });
+      } else {
+        // THROW ERROR: "ENTER AN EMAIL"
+      }
     } else if (this.props.location.pathname === "/signin/pwd") {
       this.props.login({
         email: this.state.email,

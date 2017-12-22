@@ -1,3 +1,8 @@
 export const parseEmail = (email) => {
-  return email.match(/^(.*)\@hmail\.com/);
+  const split = email.split("@");
+  if (split[1] === "@hmail.com" || split.length === 1) {
+    return split[0];
+  } else {
+    return null;
+  }
 };

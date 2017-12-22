@@ -9,7 +9,7 @@ const UserReducer = (state = initialState, action) => {
   
   switch (action.type) {
     case RECEIVE_USER:
-      newState.action.user.id = action.user;
+      newState[action.user.email] = action.user;
       return newState;
     default:
       return state;
