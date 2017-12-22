@@ -11,12 +11,21 @@ class Signin extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
+  componentWillMount() {
+    this.props.history.push("/signin/identifier");
+  }
+  
   handleSubmit(e) {
     e.preventDefault();
-    this.props.login({
-      email: this.state.email,
-      password: this.state.password
-    });
+    if (this.props.location.pathname === "/signin/identifier") {
+      this.props.history.push("/signin/pwd");
+    } else if (this.props.location.pathname === "/signin/pwd") {
+      this.props.login({
+        email: this.state.email,
+        password: this.state.password
+      });
+    }
+    
   }
   
   handleChange(field) {
@@ -29,7 +38,8 @@ class Signin extends React.Component {
     return (
         <div className="signin">
           <div className="signin-main">
-            <form className="signin-form">
+            <form className="signin-form"
+              onSubmit={this.handleSubmit}>
               <Link
                 className="navbar-logo"
                 to="/">
