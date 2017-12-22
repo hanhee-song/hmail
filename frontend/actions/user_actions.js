@@ -33,3 +33,13 @@ export const fetchUser = (id) => {
       );
   };
 };
+
+export const validateEmail = (email) => {
+  return (dispatch) => {
+    return UserApiUtil.validateEmail(email)
+      .then(
+        user => dispatch(receiveUser(user)),
+        errors => dispatch(receiveUserErrors(errors))
+      );
+  };
+};

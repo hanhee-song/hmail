@@ -14,8 +14,7 @@ const UserErrorsReducer = (state = initialState, action) => {
     case CLEAR_USER_ERRORS:
       return initialState;
     case RECEIVE_USER_ERRORS:
-      debugger;
-      return;
+      return action.errors.responseJSON;
     default:
       return state;
   }

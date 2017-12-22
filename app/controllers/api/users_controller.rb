@@ -8,6 +8,15 @@ class Api::UsersController < ApplicationController
       render json: @user.errors.full_messages, status: 422
     end
   end
+  
+  def show
+    @user = User.find_by(email: user_params[:email])
+    if @user
+      render "api/users/show"
+    else
+      render json: ["No user with this email found"], status: 404
+    end
+  end
 
   # def update
   #   @user = User.find(params[:id])

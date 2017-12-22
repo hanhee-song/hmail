@@ -4,3 +4,13 @@ export const fetchUser = (id) => {
     url: `/api/users/${id}`,
   });
 };
+
+export const validateEmail = (email) => {
+  return $.ajax({
+    method: "GET",
+    url: `/api/users/0`,
+    data: {
+      user: { email }
+    }
+  });
+};

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { parseEmail } from '../../util/validate_email';
 
 class Signin extends React.Component {
   constructor(props) {
@@ -7,6 +8,7 @@ class Signin extends React.Component {
     this.state = {
       email: "",
       password: "",
+      validatingEmail: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -15,17 +17,35 @@ class Signin extends React.Component {
     this.props.history.push("/signin/identifier");
   }
   
+  componentWillReceiveProps(nextProps) {
+    if (this.state.validatingEmail) {
+      debugger;
+    }
+  }
+  
   handleSubmit(e) {
     e.preventDefault();
     if (this.props.location.pathname === "/signin/identifier") {
-      this.props.history.push("/signin/pwd");
+      const email = parseEmail(this.state.email);
+      this.props.validateEmail(email);
+      this.setState({ validatingEmail: true });
+      // validateEmail(email)
+      //   .then(
+      //     success => {
+      //       this.props.history.push("/signin/pwd");
+      //       // NB: The success case hasn't been tested yet
+      //       debugger;
+      //     },
+      //     error => {
+      //       this.setState({ error: error.responseJSON[0] });
+      //     }
+      //   );
     } else if (this.props.location.pathname === "/signin/pwd") {
       this.props.login({
         email: this.state.email,
         password: this.state.password
       });
     }
-    
   }
   
   handleChange(field) {
