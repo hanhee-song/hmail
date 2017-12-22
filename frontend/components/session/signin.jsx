@@ -75,7 +75,7 @@ class Signin extends React.Component {
                   onChange={this.handleChange("email")}
                   value={this.state.email}/>
                 <span></span>
-                <div className="email-placeholder">Email</div>
+                <div className={`email-placeholder ${this.state.email && "filled"}`}>Email</div>
               </div>
               
               <input className="signin-button"

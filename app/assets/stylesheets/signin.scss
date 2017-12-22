@@ -90,6 +90,13 @@
   color: #3079ed;
 }
 
+.signin-input ~ .email-placeholder.filled {
+  top: -14px;
+  left: 2px;
+  font-size: 11px;
+  color: #3079ed;
+}
+
 .signin-button {
   display: inline-block;
   cursor: pointer;
