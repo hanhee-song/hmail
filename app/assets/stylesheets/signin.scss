@@ -42,7 +42,7 @@
 
 .signin-input-wrapper {
   position: relative;
-  margin-top: 40px;
+  margin-top: 60px;
 }
 
 .signin-input {
@@ -88,4 +88,29 @@
   left: 2px;
   font-size: 11px;
   color: #3079ed;
+}
+
+.signin-button {
+  display: inline-block;
+  cursor: pointer;
+  user-select: none;
+  border: none;
+  border-radius: 4px;
+  background-color: #4d90fe;
+  margin-top: 40px;
+  margin-bottom: 10px; // TEMP
+  padding: 11px 26px;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 500;
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.6);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.6);
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.6);
+  float: right;
+}
+
+.signin-button:focus {
+  -webkit-box-shadow: 0px 1px 10px 0px rgba(0,0,0,0.6);
+  -moz-box-shadow: 0px 1px 10px 0px rgba(0,0,0,0.6);
+  box-shadow: 0px 1px 10px 0px rgba(0,0,0,0.6);
 }

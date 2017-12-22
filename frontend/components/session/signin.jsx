@@ -48,10 +48,14 @@ class Signin extends React.Component {
                 <div className="email-placeholder">Email</div>
               </div>
               
-            <input
-              className="signin-input password"
-              onChange={this.handleChange("password")}
-              value={this.state.password}/>
+              <input className="signin-button"
+                type="submit"
+                value="NEXT" />
+              
+              <input
+                className="signin-input password"
+                onChange={this.handleChange("password")}
+                value={this.state.password}/>
           </form>
           </div>
         </div>
