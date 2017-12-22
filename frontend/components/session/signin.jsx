@@ -38,10 +38,16 @@ class Signin extends React.Component {
               </Link>
               <div className="signin-bigtext">Sign In</div>
               <div className="signin-smalltext">to continue to Hmail</div>
-            <input
-              className="signin-input email"
-              onChange={this.handleChange("email")}
-              value={this.state.email}/>
+              
+              <div className="signin-input-wrapper">
+                <input
+                  className="signin-input email"
+                  onChange={this.handleChange("email")}
+                  value={this.state.email}/>
+                <span></span>
+                <div className="email-placeholder">Email</div>
+              </div>
+              
             <input
               className="signin-input password"
               onChange={this.handleChange("password")}

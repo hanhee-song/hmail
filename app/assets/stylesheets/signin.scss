@@ -39,3 +39,53 @@
   margin-top: 7px;
   font-size: 14px;
 }
+
+.signin-input-wrapper {
+  position: relative;
+  margin-top: 40px;
+}
+
+.signin-input {
+  width: 100%;
+  border: 0;
+  padding: 3px;
+  font-size: 14px;
+  border-bottom: 1px solid #ccc;
+}
+
+.signin-input + span {
+  position: relative;
+  top: -2px;
+  background: #ccc;
+  width: 0;
+  height: 2px;
+  display: block;
+  margin: auto;
+  content: '';
+  transition: width .2s, background .2s;
+  -webkit-transition: width .2s, background .2s;
+}
+
+.signin-input:focus + span {
+  width: 100%;
+  background: #3079ed;
+  transition: width .2s, background .2s;
+  -webkit-transition: width .2s, background .2s;
+}
+
+.signin-input ~ .email-placeholder {
+  position: absolute;
+  top: 5px;
+  left: 3px;
+  font-size: 15px;
+  color: #777;
+  transition: all .25s ease-out;
+  -webkit-transition: all .25s ease-out;
+}
+
+.signin-input:focus ~ .email-placeholder {
+  top: -14px;
+  left: 2px;
+  font-size: 11px;
+  color: #3079ed;
+}
