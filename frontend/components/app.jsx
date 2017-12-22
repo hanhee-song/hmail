@@ -8,7 +8,7 @@ import SigninContainer from './session/signin_container';
 
 const App = () => {
   return (
-    <section>
+    <section className="app">
       <Switch>
         <AuthRoute
           component={SignupContainer}

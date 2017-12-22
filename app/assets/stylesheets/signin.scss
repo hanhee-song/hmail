@@ -1,0 +1,20 @@
+.signin {
+  min-height: 100%;
+  width: 100%;
+  padding: 100px 0;
+  background: #ffffff; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #ffffff 0%, #e5e5e5 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #ffffff 0%,#e5e5e5 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #ffffff 0%,#e5e5e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+.signin-main {
+  background: #fff;
+  width: 450px;
+  height: 500px;
+  margin: 0 auto;
+  -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
+  -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
+  box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
+}

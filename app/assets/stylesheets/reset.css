@@ -62,3 +62,7 @@ li {
 	outline: none;
   box-sizing: border-box;
 }
+
+.app, #root, body, html {
+	height: 100%;
+}

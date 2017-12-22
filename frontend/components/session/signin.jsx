@@ -26,16 +26,21 @@ class Signin extends React.Component {
   
   render () {
     return (
-      <form>
-        <input
-          className="signin-input email"
-          onChange={this.handleChange("email")}
-          value={this.state.email}/>
-        <input
-          className="signin-input password"
-          onChange={this.handleChange("password")}
-          value={this.state.password}/>
-      </form>
+        <div className="signin">
+          <div className="signin-main">
+            <form>
+              inside form
+            <input
+              className="signin-input email"
+              onChange={this.handleChange("email")}
+              value={this.state.email}/>
+            <input
+              className="signin-input password"
+              onChange={this.handleChange("password")}
+              value={this.state.password}/>
+          </form>
+          </div>
+        </div>
     );
   }
 }
