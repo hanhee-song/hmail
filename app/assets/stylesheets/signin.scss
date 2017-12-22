@@ -83,14 +83,13 @@
   -webkit-transition: all .25s ease-out;
 }
 
-.signin-input:focus ~ .email-placeholder {
+.signin-input ~ .email-placeholder.filled {
   top: -14px;
   left: 2px;
   font-size: 11px;
-  color: #3079ed;
 }
 
-.signin-input ~ .email-placeholder.filled {
+.signin-input:focus ~ .email-placeholder {
   top: -14px;
   left: 2px;
   font-size: 11px;

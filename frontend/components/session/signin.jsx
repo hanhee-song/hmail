@@ -29,17 +29,6 @@ class Signin extends React.Component {
       const email = parseEmail(this.state.email);
       this.props.validateEmail(email);
       this.setState({ validatingEmail: true });
-      // validateEmail(email)
-      //   .then(
-      //     success => {
-      //       this.props.history.push("/signin/pwd");
-      //       // NB: The success case hasn't been tested yet
-      //       debugger;
-      //     },
-      //     error => {
-      //       this.setState({ error: error.responseJSON[0] });
-      //     }
-      //   );
     } else if (this.props.location.pathname === "/signin/pwd") {
       this.props.login({
         email: this.state.email,
