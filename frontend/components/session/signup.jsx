@@ -82,25 +82,43 @@ class Signup extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
+    const s = this.state;
     // First make 'focused' true for all fields in this.state.focus
     // then, do a front-end check for errors
+    let noSubmit = false;
+    Object.values(s.errors).forEach((error) => {
+      noSubmit = noSubmit || Boolean(error);
+    });
+    noSubmit = noSubmit || !(s.fname && s.lname && s.email && s.password1);
     // lastly, submit the form when there are no front-end errors
-    this.props.signup({
-      fname: this.state.fname,
-      lname: this.state.lname,
-      email: this.state.email,
-      password: this.state.password1,
-    }).then(
+    if (noSubmit) {
+      // Run through every field and trigger the on-blur effects
+      this.setState({
+        focused: {
+          fname: true,
+          lname: true,
+          email: true,
+          password1: true,
+          password2: true,
+        }
+      });
+      setTimeout(() => {
+        ["fname", "lname", "email", "password2", "password1"].forEach((field) => {
+          this.handleBlur(field)();
+        });
+      }, 0);
+    } else {
+      this.props.signup({
+        fname: s.fname,
+        lname: s.lname,
+        email: s.email,
+        password: s.password1,
+      }).then(
         success => this.props.history.push("/inbox")
       );
+    }
   }
   
-  
-  // REVIEW: I only need to mark fields as 'focused' if I ever do a general
-  // error check and don't want to check every field
-  // i.e. I might not need 'focused'
-  // Actually, I might need it for the password1/password2 comparison to
-  // trigger only when both fields have been focused
   handleFocus(field) {
     return (e) => {
       this.updateState("focused", field, true);
@@ -141,15 +159,18 @@ class Signup extends React.Component {
       this.updateState("errors", "password2", "You can't leave this empty.");
     }
     
-    if (s.focused.password1 && s.password1) {
+    if (s.password1) {
       if (s.password1.length < 6) {
         this.updateState("errors", "password1", "Short passwords are easy to guess. Try one with at least 6 characters.");
+        if (!s.password2) {
+          this.updateState("errors", "password2", "");
+          this.updateState("focused", "password2", false);
+        }
       } else {
         this.updateState("errors", "password1", "");
-      }
-      if (!s.password2) {
-        this.updateState("errors", "password2", "");
-        this.updateState("focused", "password2", false);
+        if (!s.password2 && s.focused.password2) {
+          this.updateState("errors", "password2", "You can't leave this empty.");
+        }
       }
     }
     
@@ -163,9 +184,8 @@ class Signup extends React.Component {
   }
   
   updateState(slice, field, value) {
-    console.log(slice, field, value);
-    console.log(Object.assign({}, this.state[slice], { [field]: value }));
     setTimeout(() => {
+      console.log(slice, field, value);
       this.setState({ [slice]: Object.assign({}, this.state[slice], { [field]: value }) });
     }, 0);
   }
