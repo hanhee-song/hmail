@@ -1,5 +1,8 @@
 import React from 'react';
+import Navbar from './navbar/navbar';
 
 export default () => (
-  <div>This is the inbox</div>
+  <div className="inbox-main">
+    <Navbar />
+  </div>
 );
