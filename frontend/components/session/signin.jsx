@@ -59,8 +59,11 @@ class Signin extends React.Component {
       }
     }
     
+    // SUBMIT EMAIL
     if (this.props.location.pathname === "/signin/identifier") {
       this.handleEmailSubmit();
+      
+    // SUBMIT PASSWORD
     } else if (this.props.location.pathname === "/signin/pwd") {
       this.props.login({
         email: this.state.email,
@@ -82,6 +85,7 @@ class Signin extends React.Component {
     } else {
       this.setState({
         validatingEmail: true,
+        submittedEmail: email,
       });
       setTimeout(() => {
         this.props.receiveSessionErrors(["Enter an email"]);
