@@ -20,6 +20,8 @@ const App = () => {
         <AuthRoute
           component={SigninContainer}
           path="/signin"/>
+        <ProtectedRoute
+          path="/inbox"/>
         <AuthRoute
           component={Welcome}
           path="/" />
