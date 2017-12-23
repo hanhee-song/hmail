@@ -32,6 +32,7 @@ class Signup extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleFocus = this.handleFocus.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
+    this.updateState = this.updateState.bind(this);
   }
   
   componentWillReceiveProps(nextProps) {
@@ -102,19 +103,70 @@ class Signup extends React.Component {
   // trigger only when both fields have been focused
   handleFocus(field) {
     return (e) => {
-      this.setState({ focused: Object.assign({}, this.state.focused, { [field]: true }) });
+      this.updateState("focused", field, true);
     };
   }
   
   handleBlur(field) {
+    const s = this.state;
     return (e) => {
-      if (!this.state[field]) {
-        this.setState({ errors: Object.assign({}, this.state.errors, { [field]: "You can't leave this empty." }) });
+      if (field.includes("password")) {
+        this.handlePasswordErrors(field);
       } else {
-        
-        this.setState({ errors: Object.assign({}, this.state.errors, { [field]: "" }) });
+        if (!s[field]) {
+          this.updateState("errors", field, "You can't leave this empty.");
+        } else {
+          this.updateState("errors", field, "");
+        }
       }
     };
+  }
+  
+  handlePasswordErrors(field) {
+    const s = this.state;
+    // Cases:
+    // 0. one or both are empty and blurred
+      // a. p1 is focused and empty
+      // b. p2 is focused and empty, and p1 is also empty
+    // 1. the first field is blurred and full // and the second field is blank
+      // a. not long enough
+      // b. long enough
+    // 2. the second field is blurred and full
+      // a. they don't match
+      // b. they match
+    if (s.focused.password1 && !s.password1) {
+      this.updateState("errors", "password1", "You can't leave this empty.");
+    }
+    if (s.focused.password2 && !s.password1 && !s.password2) {
+      this.updateState("errors", "password2", "You can't leave this empty.");
+    }
+    
+    if (s.focused.password1 && s.password1) {
+      if (s.password1.length < 6) {
+        this.updateState("errors", "password1", "Short passwords are easy to guess. Try one with at least 6 characters.");
+      } else {
+        this.updateState("errors", "password1", "");
+      }
+      if (!s.password2) {
+        this.updateState("errors", "password2", "");
+      }
+    }
+    
+    if (s.focused.password2 && s.password2) {
+      if (s.password1 !== s.password2) {
+        this.updateState("errors", "password2", "These passwords don't match. Try again?");
+      } else if (s.password2) {
+        this.updateState("errors", "password2", "");
+      }
+    }
+  }
+  
+  updateState(slice, field, value) {
+    console.log(slice, field, value);
+    console.log(Object.assign({}, this.state[slice], { [field]: value }));
+    setTimeout(() => {
+      this.setState({ [slice]: Object.assign({}, this.state[slice], { [field]: value }) });
+    }, 0);
   }
   
   render () {
