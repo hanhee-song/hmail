@@ -1,0 +1,28 @@
+.navbar-top {
+  height: 60px;
+  border-bottom: 1px solid #bbb;
+  display: flex;
+  justify-content: space-between;
+  font-family: "Roboto", sans-serif;
+}
+
+.navbar-top-left {
+  width: 200px;
+}
+
+.navbar-top-logo {
+  margin: 15px 30px;
+  font-size: 25px;
+  line-height: 30px;
+  color: #333;
+  font-weight: 400;
+  display: inline-block;
+}
+
+.navbar-top-right {
+  display: flex;
+  justify-content: space-between;
+  padding-right: 20px;
+  align-items: center;
+  width: calc(100% - 200px);
+}
