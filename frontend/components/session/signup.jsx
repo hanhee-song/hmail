@@ -46,6 +46,9 @@ class Signup extends React.Component {
       if (nextProps.errors.includes("Email can't be blank")) {
         errors.email = "You can't leave this empty.";
       }
+      if (nextProps.errors.includes("Email has already been taken")) {
+        errors.email = "Someone already has that username. Try another?";
+      }
       if (nextProps.errors.includes("Fname can't be blank")) {
         errors.fname = "You can't leave this empty.";
       }
@@ -78,6 +81,9 @@ class Signup extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
+    // First make 'focused' true for all fields in this.state.focus
+    // then, do a front-end check for errors
+    // lastly, submit the form when there are no front-end errors
     this.props.signup({
       fname: this.state.fname,
       lname: this.state.lname,
@@ -88,6 +94,12 @@ class Signup extends React.Component {
       );
   }
   
+  
+  // REVIEW: I only need to mark fields as 'focused' if I ever do a general
+  // error check and don't want to check every field
+  // i.e. I might not need 'focused'
+  // Actually, I might need it for the password1/password2 comparison to
+  // trigger only when both fields have been focused
   handleFocus(field) {
     return (e) => {
       this.setState({ focused: Object.assign({}, this.state.focused, { [field]: true }) });
@@ -97,8 +109,9 @@ class Signup extends React.Component {
   handleBlur(field) {
     return (e) => {
       if (!this.state[field]) {
-        this.setState({ errors: Object.assign({}, this.state.errors, { [field]: "You can't leave this empty" }) });
+        this.setState({ errors: Object.assign({}, this.state.errors, { [field]: "You can't leave this empty." }) });
       } else {
+        
         this.setState({ errors: Object.assign({}, this.state.errors, { [field]: "" }) });
       }
     };
@@ -141,6 +154,9 @@ class Signup extends React.Component {
                       onFocus={this.handleFocus("lname")}
                       onBlur={this.handleBlur("lname")}/>
                   </div>
+                  <div className="signup-input-error">
+                    {this.state.errors.fname || this.state.errors.lname}
+                  </div>
                 </div>
                 
                 <div className="signup-input-section">
@@ -157,6 +173,9 @@ class Signup extends React.Component {
                       onBlur={this.handleBlur("email")}/>
                     <div className="signup-email-tag">@hmail.com</div>
                   </label>
+                  <div className="signup-input-error">
+                    {this.state.errors.email}
+                  </div>
                 </div>
                 
                 <div className="signup-input-section">
@@ -172,6 +191,9 @@ class Signup extends React.Component {
                       onFocus={this.handleFocus("password1")}
                       onBlur={this.handleBlur("password1")}/>
                   </label>
+                  <div className="signup-input-error">
+                    {this.state.errors.password1}
+                  </div>
                 </div>
                 
                 <div className="signup-input-section">
@@ -187,6 +209,9 @@ class Signup extends React.Component {
                       onFocus={this.handleFocus("password2")}
                       onBlur={this.handleBlur("password2")}/>
                   </label>
+                  <div className="signup-input-error">
+                    {this.state.errors.password2}
+                  </div>
                 </div>
                 
                 <div className="signup-input-section">
