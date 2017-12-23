@@ -60,6 +60,8 @@ class Signup extends React.Component {
         errors.email = "Short passwords are easy to guess. Try one with at least 6 characters.";
       }
     }
+    
+    this.setState({ errors });
   }
   
   resetErrors() {
@@ -185,7 +187,6 @@ class Signup extends React.Component {
   
   updateState(slice, field, value) {
     setTimeout(() => {
-      console.log(slice, field, value);
       this.setState({ [slice]: Object.assign({}, this.state[slice], { [field]: value }) });
     }, 0);
   }
@@ -307,7 +308,6 @@ class Signup extends React.Component {
                     value="Sign Up" />
                 </div>
               </form>
-              {this.props.errors}
             </div>
           </div>
         </div>
