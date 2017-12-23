@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { parseEmail } from '../../util/validate_email';
+import { parseEmail, fullEmail } from '../../util/validate_email';
 
 class Signin extends React.Component {
   constructor(props) {
@@ -29,8 +29,19 @@ class Signin extends React.Component {
         this.props.clearUserErrors();
       } else if (nextProps.errors[0]) {
         this.setState({ validatingEmail: false });
-        // Do nothing?
+        this.selectField("email");
       }
+    }
+    
+    // HANDLE AUTOFOCUS ON SWITCHING PATHNAMES
+    if (nextProps.location.pathname === "/signin/identifier") {
+      setTimeout(() => {
+        this.selectField('email');
+      }, 250);
+    } else if (nextProps.location.pathname === "/signin/pwd") {
+      setTimeout(() => {
+        this.selectField('password');
+      }, 250);
     }
   }
   
@@ -59,15 +70,20 @@ class Signin extends React.Component {
   handleEmailSubmit() {
     const email = parseEmail(this.state.email);
     if (email) {
-      this.props.validateEmail(email);
       this.setState({
         validatingEmail: true,
         submittedEmail: email,
        });
+       setTimeout(() => {
+         this.props.validateEmail(email);
+       }, 0);
     } else {
-      this.props.receiveSessionErrors(["Enter an email"]);
-      const input = document.querySelector('.signin-input.email');
-      input.focus();
+      this.setState({
+        validatingEmail: true,
+      });
+      setTimeout(() => {
+        this.props.receiveSessionErrors(["Enter an email"]);
+      }, 0);
     }
   }
   
@@ -75,6 +91,11 @@ class Signin extends React.Component {
     return (e) => {
       this.setState({ [field]: e.target.value });
     };
+  }
+  
+  selectField(field) {
+    const input = document.querySelector(`.signin-input.${field}`);
+    input.focus();
   }
   
   render () {
@@ -120,7 +141,7 @@ class Signin extends React.Component {
                     <div>Hmail</div>
                   </Link>
                   <div className="signin-bigtext">Welcome</div>
-                  <div className="signin-smalltext">to continue to Hmail</div>
+                  <div className="signin-smalltext">{fullEmail(this.state.email)}</div>
                   
                   <div className="signin-input-wrapper">
                     <input

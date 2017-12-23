@@ -6,3 +6,7 @@ export const parseEmail = (email) => {
     return null;
   }
 };
+
+export const fullEmail = (email) => {
+  return parseEmail(email) + '@hmail.com';
+};
