@@ -66,6 +66,8 @@ class Signin extends React.Component {
        });
     } else {
       this.props.receiveSessionErrors(["Enter an email"]);
+      const input = document.querySelector('.signin-input.email');
+      input.focus();
     }
   }
   
@@ -99,7 +101,7 @@ class Signin extends React.Component {
                       onChange={this.handleChange("email")}
                       value={this.state.email}/>
                     <span></span>
-                    <div className={`email-placeholder ${this.state.email && "filled"}`}>Email</div>
+                    <div className={`input-placeholder ${this.state.email && "filled"}`}>Email</div>
                   </div>
                   <div className="signin-input-error">{this.props.errors[0]}</div>
                   <input className="signin-button"
@@ -122,11 +124,12 @@ class Signin extends React.Component {
                   
                   <div className="signin-input-wrapper">
                     <input
-                      className="signin-input password"
+                      type="password"
+                      className={`signin-input password ${this.props.errors[0] && "error"}`}
                       onChange={this.handleChange("password")}
                       value={this.state.password}/>
                     <span></span>
-                    <div className={`email-placeholder ${this.state.email && "filled"}`}>Email</div>
+                    <div className={`input-placeholder ${this.state.password && "filled"}`}>Enter your password</div>
                   </div>
                   <div className="signin-input-error">{this.props.errors[0]}</div>
                   <input className="signin-button"
