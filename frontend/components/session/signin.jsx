@@ -20,6 +20,9 @@ class Signin extends React.Component {
     this.props.clearSessionErrors();
     this.props.clearUserErrors();
     this.props.history.replace("/signin/identifier");
+    setTimeout(() => {
+      this.selectField('email');
+    }, 250);
   }
   
   componentWillReceiveProps(nextProps) {
@@ -33,8 +36,6 @@ class Signin extends React.Component {
       if (Object.keys(nextProps.users).includes(this.state.submittedEmail)) {
         this.props.history.push("/signin/pwd");
         this.setState({ validatingEmail: false });
-        this.props.clearSessionErrors();
-        this.props.clearUserErrors();
       } else if (nextProps.errors[0]) {
         this.setState({ validatingEmail: false });
         this.selectField("email");
@@ -46,17 +47,22 @@ class Signin extends React.Component {
         validatingPassword: false,
         password: "",
       });
+      this.selectField("password");
     }
     
     // HANDLE AUTOFOCUS ON SWITCHING PATHNAMES
-    if (nextProps.location.pathname === "/signin/identifier") {
+    if (nextProps.location.pathname === "/signin/identifier" && this.props.location.pathname === "/signin/pwd") {
       // change email field to most recently submitted/verified email
       this.setState({ email: this.state.submittedEmail });
+      this.props.clearSessionErrors();
+      this.props.clearUserErrors();
       setTimeout(() => {
         this.selectField('email');
       }, 250);
-    } else if (nextProps.location.pathname === "/signin/pwd") {
+    } else if (nextProps.location.pathname === "/signin/pwd" && this.props.location.pathname === "/signin/identifier") {
       this.setState({ password: "" });
+      this.props.clearSessionErrors();
+      this.props.clearUserErrors();
       setTimeout(() => {
         this.selectField('password');
       }, 250);
