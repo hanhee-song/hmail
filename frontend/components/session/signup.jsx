@@ -149,6 +149,7 @@ class Signup extends React.Component {
       }
       if (!s.password2) {
         this.updateState("errors", "password2", "");
+        this.updateState("focused", "password2", false);
       }
     }
     
