@@ -7,6 +7,7 @@ class Signin extends React.Component {
     super(props);
     this.state = {
       email: "",
+      emailHasAt: false,
       password: "",
       validatingEmail: false,
       validatingPassword: false,
@@ -53,7 +54,11 @@ class Signin extends React.Component {
     // HANDLE AUTOFOCUS ON SWITCHING PATHNAMES
     if (nextProps.location.pathname === "/signin/identifier" && this.props.location.pathname === "/signin/pwd") {
       // change email field to most recently submitted/verified email
-      this.setState({ email: this.state.submittedEmail });
+      if (this.state.emailHasAt) {
+        this.setState({ email: fullEmail(this.state.submittedEmail) });
+      } else {
+        this.setState({ email: this.state.submittedEmail });
+      }
       this.props.clearSessionErrors();
       this.props.clearUserErrors();
       setTimeout(() => {
@@ -111,6 +116,7 @@ class Signin extends React.Component {
       this.setState({
         validatingEmail: true,
         submittedEmail: email,
+        emailHasAt: this.state.email.includes("@"),
        });
        setTimeout(() => {
          this.props.validateEmail(email);
@@ -118,7 +124,7 @@ class Signin extends React.Component {
     } else {
       this.setState({
         validatingEmail: true,
-        submittedEmail: email,
+        submittedEmail: "",
       });
       setTimeout(() => {
         this.props.receiveSessionErrors(["Enter an email"]);
