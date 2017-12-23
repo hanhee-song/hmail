@@ -35,6 +35,8 @@ class Signin extends React.Component {
     
     // HANDLE AUTOFOCUS ON SWITCHING PATHNAMES
     if (nextProps.location.pathname === "/signin/identifier") {
+      // change email field to most recently submitted/verified email
+      this.setState({ email: this.state.submittedEmail });
       setTimeout(() => {
         this.selectField('email');
       }, 250);
@@ -141,7 +143,7 @@ class Signin extends React.Component {
                     <div>Hmail</div>
                   </Link>
                   <div className="signin-bigtext">Welcome</div>
-                  <div className="signin-smalltext">{fullEmail(this.state.email)}</div>
+                  <div className="signin-smalltext">{fullEmail(this.state.submittedEmail)}</div>
                   
                   <div className="signin-input-wrapper">
                     <input
