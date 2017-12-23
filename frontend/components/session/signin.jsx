@@ -13,6 +13,7 @@ class Signin extends React.Component {
       errors: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleEmailSubmit = this.handleEmailSubmit.bind(this);
   }
   
   componentWillMount() {
@@ -45,24 +46,26 @@ class Signin extends React.Component {
       }
     }
     
-    
-    
     if (this.props.location.pathname === "/signin/identifier") {
-      const email = parseEmail(this.state.email);
-      if (email) {
-        this.props.validateEmail(email);
-        this.setState({
-          validatingEmail: true,
-          submittedEmail: email,
-         });
-      } else {
-        this.props.receiveSessionErrors(["Enter an email"]);
-      }
+      this.handleEmailSubmit();
     } else if (this.props.location.pathname === "/signin/pwd") {
       this.props.login({
         email: this.state.email,
         password: this.state.password
       });
+    }
+  }
+  
+  handleEmailSubmit() {
+    const email = parseEmail(this.state.email);
+    if (email) {
+      this.props.validateEmail(email);
+      this.setState({
+        validatingEmail: true,
+        submittedEmail: email,
+       });
+    } else {
+      this.props.receiveSessionErrors(["Enter an email"]);
     }
   }
   
@@ -89,17 +92,17 @@ class Signin extends React.Component {
               
               <div className="signin-input-wrapper">
                 <input
-                  className="signin-input email"
+                  className={`signin-input email ${this.props.errors[0] && "error"}`}
                   onChange={this.handleChange("email")}
                   value={this.state.email}/>
                 <span></span>
                 <div className={`email-placeholder ${this.state.email && "filled"}`}>Email</div>
               </div>
-              
+              <div className="signin-input-error">{this.props.errors[0]}</div>
               <input className="signin-button"
                 type="submit"
                 value="NEXT" />
-              {this.props.errors[0]}
+              
               
               <input
                 className="signin-input password"

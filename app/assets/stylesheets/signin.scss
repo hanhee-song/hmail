@@ -73,6 +73,11 @@
   -webkit-transition: width .2s, background .2s;
 }
 
+.signin-input.error + span {
+  width: 100%;
+  background: #d50000;
+}
+
 .signin-input ~ .email-placeholder {
   position: absolute;
   top: 5px;
@@ -94,6 +99,16 @@
   left: 2px;
   font-size: 11px;
   color: #3079ed;
+}
+
+.signin-input.error:focus ~ .email-placeholder {
+  color: #d50000;
+}
+
+.signin-input-error {
+  margin-top: 10px;
+  color: #d50000;
+  font-size: 12px;
 }
 
 .signin-button {

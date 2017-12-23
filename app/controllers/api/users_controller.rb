@@ -14,7 +14,7 @@ class Api::UsersController < ApplicationController
     if @user
       render "api/users/show"
     else
-      render json: ["No user with this email found"], status: 404
+      render json: ["Couldn't find your Hmail account"], status: 404
     end
   end
 
