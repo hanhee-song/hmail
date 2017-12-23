@@ -11,7 +11,9 @@
 }
 
 .signin-main {
+  position: relative;
   background: #fff;
+  overflow: hidden;
   width: 450px;
   height: 500px;
   margin: 0 auto;
@@ -19,6 +21,28 @@
   -webkit-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
   -moz-box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
   box-shadow: 0px 1px 5px 0px rgba(0,0,0,0.4);
+}
+
+.signin-panels {
+  position: relative;
+  left: 0;
+  display: flex;
+  flex-shrink: 0;
+  width: 820px;
+  transition: left .25s ease;
+  -webkit-transition: left .25s ease;
+}
+
+.signin-panels.pwd {
+  left: -450px;
+}
+
+.signin-panels-email, .signin-panels-password {
+  width: 370px;
+}
+
+.signin-panels-password {
+  margin-left: 80px;
 }
 
 .signin-form .navbar-logo {

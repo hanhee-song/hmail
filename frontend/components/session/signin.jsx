@@ -79,36 +79,63 @@ class Signin extends React.Component {
     return (
         <div className="signin">
           <div className="signin-main">
-            <form className="signin-form"
-              onSubmit={this.handleSubmit}>
-              <Link
-                className="navbar-logo"
-                to="/">
-                <i className="fa fa-envelope-o" aria-hidden="true"></i>
-                <div>Hmail</div>
-              </Link>
-              <div className="signin-bigtext">Sign In</div>
-              <div className="signin-smalltext">to continue to Hmail</div>
+            <div className={`signin-panels ${this.props.location.pathname === "/signin/pwd" && "pwd"}`}>
               
-              <div className="signin-input-wrapper">
-                <input
-                  className={`signin-input email ${this.props.errors[0] && "error"}`}
-                  onChange={this.handleChange("email")}
-                  value={this.state.email}/>
-                <span></span>
-                <div className={`email-placeholder ${this.state.email && "filled"}`}>Email</div>
+              <div className="signin-panels-email">
+                <form className="signin-form"
+                  onSubmit={this.handleSubmit}>
+                  <Link
+                    className="navbar-logo"
+                    to="/">
+                    <i className="fa fa-envelope-o" aria-hidden="true"></i>
+                    <div>Hmail</div>
+                  </Link>
+                  <div className="signin-bigtext">Sign In</div>
+                  <div className="signin-smalltext">to continue to Hmail</div>
+                  
+                  <div className="signin-input-wrapper">
+                    <input
+                      className={`signin-input email ${this.props.errors[0] && "error"}`}
+                      onChange={this.handleChange("email")}
+                      value={this.state.email}/>
+                    <span></span>
+                    <div className={`email-placeholder ${this.state.email && "filled"}`}>Email</div>
+                  </div>
+                  <div className="signin-input-error">{this.props.errors[0]}</div>
+                  <input className="signin-button"
+                    type="submit"
+                    value="NEXT" />
+                </form>
               </div>
-              <div className="signin-input-error">{this.props.errors[0]}</div>
-              <input className="signin-button"
-                type="submit"
-                value="NEXT" />
               
+              <div className="signin-panels-password">
+                <form className="signin-form"
+                  onSubmit={this.handleSubmit}>
+                  <Link
+                    className="navbar-logo"
+                    to="/">
+                    <i className="fa fa-envelope-o" aria-hidden="true"></i>
+                    <div>Hmail</div>
+                  </Link>
+                  <div className="signin-bigtext">Welcome</div>
+                  <div className="signin-smalltext">to continue to Hmail</div>
+                  
+                  <div className="signin-input-wrapper">
+                    <input
+                      className="signin-input password"
+                      onChange={this.handleChange("password")}
+                      value={this.state.password}/>
+                    <span></span>
+                    <div className={`email-placeholder ${this.state.email && "filled"}`}>Email</div>
+                  </div>
+                  <div className="signin-input-error">{this.props.errors[0]}</div>
+                  <input className="signin-button"
+                    type="submit"
+                    value="NEXT" />
+                </form>
+              </div>
               
-              <input
-                className="signin-input password"
-                onChange={this.handleChange("password")}
-                value={this.state.password}/>
-          </form>
+            </div>
           </div>
         </div>
     );
