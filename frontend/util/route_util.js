@@ -8,7 +8,7 @@ const Auth = ({ component: Component, path, loggedIn }) => {
       path={path}
       render={(props) => (
         loggedIn ? (
-          <Redirect to='/' />
+          <Redirect to='/inbox' />
         ) : (
           <Component {...props} />
         )
