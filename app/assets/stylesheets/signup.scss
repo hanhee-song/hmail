@@ -124,6 +124,10 @@
   box-shadow: inset 0px 0px 1px 0px rgba(0,0,0,0.3);
 }
 
+.signup-input.error {
+  border: 1px solid #d50000;
+}
+
 .signup-names {
   display: flex;
   justify-content: space-between;

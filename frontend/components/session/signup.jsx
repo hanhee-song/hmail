@@ -13,9 +13,61 @@ class Signup extends React.Component {
       password1: "",
       password2: "",
       email2: "",
+      errors: {
+        fname: "",
+        lname: "",
+        email: "",
+        password1: "",
+        password2: "",
+      },
+      focused: {
+        fname: false,
+        lname: false,
+        email: false,
+        password1: false,
+        password2: false,
+      }
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleFocus = this.handleFocus.bind(this);
+    this.handleBlur = this.handleBlur.bind(this);
+  }
+  
+  componentWillReceiveProps(nextProps) {
+    const errors = {
+      fname: "",
+      lname: "",
+      email: "",
+      password1: "",
+      password2: "",
+    };
+    if (nextProps.errors) {
+      if (nextProps.errors.includes("Email can't be blank")) {
+        errors.email = "You can't leave this empty.";
+      }
+      if (nextProps.errors.includes("Fname can't be blank")) {
+        errors.fname = "You can't leave this empty.";
+      }
+      if (nextProps.errors.includes("Lname can't be blank")) {
+        errors.lname = "You can't leave this empty.";
+      }
+      if (nextProps.errors.includes("Password is too short (minimum is 6 characters)")) {
+        errors.email = "Short passwords are easy to guess. Try one with at least 6 characters.";
+      }
+    }
+  }
+  
+  resetErrors() {
+    this.setState({
+      errors: {
+        fname: "",
+        lname: "",
+        email: "",
+        password1: "",
+        password2: "",
+      }
+    });
   }
   
   handleChange(field) {
@@ -34,6 +86,22 @@ class Signup extends React.Component {
     }).then(
         success => this.props.history.push("/inbox")
       );
+  }
+  
+  handleFocus(field) {
+    return (e) => {
+      this.setState({ focused: Object.assign({}, this.state.focused, { [field]: true }) });
+    };
+  }
+  
+  handleBlur(field) {
+    return (e) => {
+      if (!this.state[field]) {
+        this.setState({ errors: Object.assign({}, this.state.errors, { [field]: "You can't leave this empty" }) });
+      } else {
+        this.setState({ errors: Object.assign({}, this.state.errors, { [field]: "" }) });
+      }
+    };
   }
   
   render () {
@@ -57,17 +125,21 @@ class Signup extends React.Component {
                   </label>
                   <div className="signup-names">
                     <input
-                      className="signup-input name"
+                      className={`signup-input name ${this.state.errors["fname"] && "error"}`}
                       type="text"
                       onChange={this.handleChange("fname")}
                       value={this.state.fname}
-                      placeholder="First"/>
+                      placeholder="First"
+                      onFocus={this.handleFocus("fname")}
+                      onBlur={this.handleBlur("fname")}/>
                     <input
-                      className="signup-input name"
+                      className={`signup-input name ${this.state.errors["lname"] && "error"}`}
                       type="text"
                       onChange={this.handleChange("lname")}
                       value={this.state.lname}
-                      placeholder="Last"/>
+                      placeholder="Last"
+                      onFocus={this.handleFocus("lname")}
+                      onBlur={this.handleBlur("lname")}/>
                   </div>
                 </div>
                 
@@ -76,11 +148,13 @@ class Signup extends React.Component {
                     Choose your username
                     <br />
                     <input
-                      className="signup-input full"
+                      className={`signup-input full ${this.state.errors["email"] && "error"}`}
                       type="text"
                       onChange={this.handleChange("email")}
                       value={this.state.email}
-                      placeholder=""/>
+                      placeholder=""
+                      onFocus={this.handleFocus("email")}
+                      onBlur={this.handleBlur("email")}/>
                     <div className="signup-email-tag">@hmail.com</div>
                   </label>
                 </div>
@@ -90,11 +164,13 @@ class Signup extends React.Component {
                     Create a password
                     <br />
                     <input
-                      className="signup-input full"
+                      className={`signup-input full ${this.state.errors["password1"] && "error"}`}
                       type="password"
                       onChange={this.handleChange("password1")}
                       value={this.state.password1}
-                      placeholder=""/>
+                      placeholder=""
+                      onFocus={this.handleFocus("password1")}
+                      onBlur={this.handleBlur("password1")}/>
                   </label>
                 </div>
                 
@@ -103,11 +179,13 @@ class Signup extends React.Component {
                     Confirm your password
                     <br />
                     <input
-                      className="signup-input full"
+                      className={`signup-input full ${this.state.errors["password2"] && "error"}`}
                       type="password"
                       onChange={this.handleChange("password2")}
                       value={this.state.password2}
-                      placeholder=""/>
+                      placeholder=""
+                      onFocus={this.handleFocus("password2")}
+                      onBlur={this.handleBlur("password2")}/>
                   </label>
                 </div>
                 
@@ -116,7 +194,7 @@ class Signup extends React.Component {
                     Your current email address
                     <br />
                     <input
-                      className="signup-input full"
+                      className={`signup-input full ${""}`}
                       type="text"
                       onChange={this.handleChange("email2")}
                       value={this.state.email2}
@@ -131,7 +209,7 @@ class Signup extends React.Component {
                     value="Sign Up" />
                 </div>
               </form>
-              
+              {this.props.errors}
             </div>
           </div>
         </div>
