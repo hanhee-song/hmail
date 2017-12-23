@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   
   def current_user
     if !@current_user
-      user = User.find_by(id: session[:auth_token])
+      user = User.find_by(id: session[:user_id])
       if user && ActiveSupport::SecurityUtils.secure_compare(session[:auth_token], user.auth_token)
         @current_user = user
       end
