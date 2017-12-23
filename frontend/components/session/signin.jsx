@@ -17,10 +17,16 @@ class Signin extends React.Component {
   }
   
   componentWillMount() {
-    this.props.history.push("/signin/identifier");
+    this.props.clearSessionErrors();
+    this.props.clearUserErrors();
+    this.props.history.replace("/signin/identifier");
   }
   
   componentWillReceiveProps(nextProps) {
+    if (nextProps.location.pathname === "/signin") {
+      this.props.history.replace("/signin/identifier");
+    }
+    
     // If email is being validated, see if user shows up in users slice
     // or if an error appears
     if (this.state.validatingEmail) {
