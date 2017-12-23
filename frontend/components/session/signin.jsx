@@ -9,8 +9,8 @@ class Signin extends React.Component {
       email: "",
       password: "",
       validatingEmail: false,
+      validatingPassword: false,
       submittedEmail: "",
-      errors: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmailSubmit = this.handleEmailSubmit.bind(this);
@@ -21,6 +21,8 @@ class Signin extends React.Component {
   }
   
   componentWillReceiveProps(nextProps) {
+    // If email is being validated, see if user shows up in users slice
+    // or if an error appears
     if (this.state.validatingEmail) {
       if (Object.keys(nextProps.users).includes(this.state.submittedEmail)) {
         this.props.history.push("/signin/pwd");
@@ -33,6 +35,13 @@ class Signin extends React.Component {
       }
     }
     
+    if (this.state.validatingPassword && nextProps.errors[0]) {
+      this.setState({
+        validatingPassword: false,
+        password: "",
+      });
+    }
+    
     // HANDLE AUTOFOCUS ON SWITCHING PATHNAMES
     if (nextProps.location.pathname === "/signin/identifier") {
       // change email field to most recently submitted/verified email
@@ -41,10 +50,17 @@ class Signin extends React.Component {
         this.selectField('email');
       }, 250);
     } else if (nextProps.location.pathname === "/signin/pwd") {
+      this.setState({ password: "" });
       setTimeout(() => {
         this.selectField('password');
       }, 250);
     }
+  }
+  
+  componentWillUnmount() {
+    // CLEAR ERRORS ON SUCCESSFUL LOGIN
+    this.props.clearSessionErrors();
+    this.props.clearUserErrors();
   }
   
   handleSubmit(e) {
@@ -65,10 +81,15 @@ class Signin extends React.Component {
       
     // SUBMIT PASSWORD
     } else if (this.props.location.pathname === "/signin/pwd") {
-      this.props.login({
-        email: this.state.email,
-        password: this.state.password
-      });
+      this.props.clearSessionErrors();
+      this.props.clearUserErrors();
+      this.setState({ validatingPassword: true });
+      setTimeout(() => {
+        this.props.login({
+          email: this.state.email,
+          password: this.state.password
+        });
+      }, 0);
     }
   }
   
