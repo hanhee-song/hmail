@@ -12,9 +12,11 @@ class Signin extends React.Component {
       validatingEmail: false,
       validatingPassword: false,
       submittedEmail: "",
+      submittedPassword: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmailSubmit = this.handleEmailSubmit.bind(this);
+    this.handlePasswordSubmit = this.handlePasswordSubmit.bind(this);
   }
   
   componentWillMount() {
@@ -98,15 +100,7 @@ class Signin extends React.Component {
       
     // SUBMIT PASSWORD
     } else if (this.props.location.pathname === "/signin/pwd") {
-      this.props.clearSessionErrors();
-      this.props.clearUserErrors();
-      this.setState({ validatingPassword: true });
-      setTimeout(() => {
-        this.props.login({
-          email: this.state.email,
-          password: this.state.password
-        });
-      }, 0);
+      this.handlePasswordSubmit();
     }
   }
   
@@ -130,6 +124,21 @@ class Signin extends React.Component {
         this.props.receiveSessionErrors(["Enter an email"]);
       }, 0);
     }
+  }
+  
+  handlePasswordSubmit() {
+    this.props.clearSessionErrors();
+    this.props.clearUserErrors();
+    this.setState({
+      validatingPassword: true,
+      submittedPassword: this.state.password,
+    });
+    setTimeout(() => {
+      this.props.login({
+        email: this.state.email,
+        password: this.state.password
+      });
+    }, 0);
   }
   
   handleChange(field) {
@@ -197,7 +206,12 @@ class Signin extends React.Component {
                     <span></span>
                     <div className={`input-placeholder ${this.state.password && "filled"}`}>Enter your password</div>
                   </div>
-                  <div className="signin-input-error">{this.props.errors[0]}</div>
+                  <div className="signin-input-error">
+                    {
+                      this.props.errors[0] &&
+                      (this.state.submittedPassword ? "Wrong password." : "Enter a password")
+                    }
+                  </div>
                   <input className="signin-button"
                     type="submit"
                     value="NEXT" />
