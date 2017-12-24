@@ -34,7 +34,7 @@ class Signin extends React.Component {
     }
     
     // Block attempting to hit /pwd without submitting an email
-    if (nextProps.location.pathname === "/signin/pwd" && !this.props.submittedEmail) {
+    if (nextProps.location.pathname === "/signin/pwd" && !this.state.submittedEmail) {
       this.props.history.replace("/signin/identifier");
     }
     
@@ -45,7 +45,10 @@ class Signin extends React.Component {
         this.props.history.push("/signin/pwd");
         this.setState({ validatingEmail: false });
       } else if (nextProps.errors[0]) {
-        this.setState({ validatingEmail: false });
+        this.setState({
+          validatingEmail: false,
+          submittedEmail: "",
+        });
         this.selectField("email");
       }
     }

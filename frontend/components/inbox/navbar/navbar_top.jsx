@@ -18,6 +18,9 @@ class NavbarTop extends React.Component {
           </div>
           <div className="navbar-top-user">
             Users
+            // NOTE TO SELF: ADD UI SLICE AND CONDITIONALLY RENDER
+            // USER MENU BASED ON STORE PROPS RATHER THAN
+            // INDIVIDUAL COMPONENT STATES
           </div>
         </div>
       </div>
