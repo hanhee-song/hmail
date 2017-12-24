@@ -1,7 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import NavbarUserDropdownContainer from './navbar_user_dropdown_container';
 
 class NavbarTop extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleUserIconClick = this.handleUserIconClick.bind(this);
+  }
+  
+  handleUserIconClick() {
+    this.props.receiveDropdown("NavbarUserDropdown");
+  }
+  
   render () {
     return (
       <div className="navbar-top">
@@ -16,11 +26,13 @@ class NavbarTop extends React.Component {
           <div className="navbar-top-search">
             Searchbar
           </div>
-          <div className="navbar-top-user">
-            Users
-            // NOTE TO SELF: ADD UI SLICE AND CONDITIONALLY RENDER
-            // USER MENU BASED ON STORE PROPS RATHER THAN
-            // INDIVIDUAL COMPONENT STATES
+          <div className="navbar-top-user-options">
+            <div className="navbar-top-user-icon"
+              onClick={this.handleUserIconClick}>icon</div>
+            {
+              this.props.dropdown === "NavbarUserDropdown" &&
+              <NavbarUserDropdownContainer />
+            }
           </div>
         </div>
       </div>
