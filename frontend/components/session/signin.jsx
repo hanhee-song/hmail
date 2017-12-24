@@ -33,6 +33,11 @@ class Signin extends React.Component {
       this.props.history.replace("/signin/identifier");
     }
     
+    // Block attempting to hit /pwd without submitting an email
+    if (nextProps.location.pathname === "/signin/pwd" && !this.props.submittedEmail) {
+      this.props.history.replace("/signin/identifier");
+    }
+    
     // If email is being validated, see if user shows up in users slice
     // or if an error appears
     if (this.state.validatingEmail) {
