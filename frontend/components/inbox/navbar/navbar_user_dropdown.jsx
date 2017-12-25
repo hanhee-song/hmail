@@ -8,7 +8,10 @@ class NavbarUserDropdown extends React.Component {
   
   render () {
     return (
-      <div>This is dropdown</div>
+      <div className="navbar-top-user-dropdown">
+        <div className="navbar-top-user-dropdown-top">dropdown top</div>
+        <div className="navbar-top-user-dropdown-bottom">dropdown bot</div>
+      </div>
     );
   }
 }

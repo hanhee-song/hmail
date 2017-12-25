@@ -11,7 +11,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    receiveDropdown: () => dispatch(receiveDropdown()),
+    receiveDropdown: (dropdown) => dispatch(receiveDropdown(dropdown)),
   };
 };
 

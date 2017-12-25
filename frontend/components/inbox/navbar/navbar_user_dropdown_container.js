@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => dispatch(logout()),
-    receiveDropdown: () => dispatch(receiveDropdown()),
+    receiveDropdown: (dropdown) => dispatch(receiveDropdown(dropdown)),
   };
 };
 
