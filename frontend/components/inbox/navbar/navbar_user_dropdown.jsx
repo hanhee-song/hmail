@@ -24,7 +24,12 @@ class NavbarUserDropdown extends React.Component {
             </div>
           </div>
         </div>
-        <div className="user-dropdown-bottom">dropdown bot</div>
+        <div className="user-dropdown-bottom">
+          <div className="user-dropdown-bottom-logout white-button"
+            onClick={this.props.logout}>
+            Sign Out
+          </div>
+        </div>
       </div>
     );
   }
