@@ -83,9 +83,23 @@
 }
 
 .navbar-top-user-dropdown-top {
-  height: 120px;
+  height: 140px;
   border-radius: 1px 1px 0 0;
   border-bottom: 1px solid #bbb;
+  display: flex;
+}
+
+.navbar-top-user-dropdown-top-left {
+  width: 100px;
+  height: 100px;
+  margin-left: 20px;
+  margin-top: 20px;
+  border-radius: 50%;
+  border: 1px solid red
+}
+
+.navbar-top-user-dropdown-top-right {
+  
 }
 
 .navbar-top-user-dropdown-bottom {
