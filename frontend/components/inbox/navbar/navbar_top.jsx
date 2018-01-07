@@ -6,10 +6,25 @@ class NavbarTop extends React.Component {
   constructor(props) {
     super(props);
     this.handleUserIconClick = this.handleUserIconClick.bind(this);
+    this.handleSearchInput = this.handleSearchInput.bind(this);
+    this.handleSearchSubmit = this.handleSearchSubmit.bind(this);
+    this.state = {
+      searchInput: "",
+    };
   }
   
   handleUserIconClick() {
     this.props.receiveDropdown("NavbarUserDropdown");
+  }
+  
+  handleSearchInput(e) {
+    this.setState({
+      searchInput: e.target.value,
+    });
+  }
+  
+  handleSearchSubmit() {
+    
   }
   
   render () {
@@ -23,8 +38,13 @@ class NavbarTop extends React.Component {
           </Link>
         </div>
         <div className="navbar-top-right">
-          <form className="navbar-top-search">
-            <div className="input">input</div>
+          <form className="navbar-top-search"
+            onSubmit={this.handleSearchSubmit}>
+            <input
+              className="input"
+              type="text"
+              onChange={this.handleSearchInput}
+              value={this.state.searchInput}></input>
             <div className="button"><i className="fa fa-search"></i></div>
           </form>
           <div className="navbar-top-user-options">
