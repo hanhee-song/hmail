@@ -5,14 +5,14 @@ import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import Welcome from './welcome/welcome';
 import SignupContainer from './session/signup_container';
 import SigninContainer from './session/signin_container';
-import Inbox from './inbox/inbox';
+import InboxContainer from './inbox/inbox_container';
 
 const App = () => {
   return (
     <section className="app">
       <Switch>
         <ProtectedRoute
-          component={Inbox}
+          component={InboxContainer}
           path="/inbox"/>
         <AuthRoute
           component={SignupContainer}

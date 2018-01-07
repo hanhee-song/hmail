@@ -44,6 +44,7 @@ class NavbarTop extends React.Component {
               className="input"
               type="text"
               onChange={this.handleSearchInput}
+              placeholder="not implemented"
               value={this.state.searchInput}></input>
             <div className="button"><i className="fa fa-search"></i></div>
           </form>
