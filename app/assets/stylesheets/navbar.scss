@@ -38,8 +38,12 @@
   cursor: pointer;
   height: 32px;
   width: 32px;
-  border: 1px solid #aaa;
   border-radius: 16px;
+  background-color: #5342f4;
+  line-height: 32px;
+  color: #fff;
+  text-align: center;
+  user-select: none;
 }
 
 .user-dropdown {
@@ -101,6 +105,7 @@
   font-size: 48px;
   line-height: 96px;
   text-align: center;
+  user-select: none;
 }
 
 .user-dropdown-top-right {

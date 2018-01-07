@@ -28,7 +28,7 @@ class NavbarTop extends React.Component {
           </div>
           <div className="navbar-top-user-options">
             <div className="navbar-top-user-icon"
-              onClick={this.handleUserIconClick}></div>
+              onClick={this.handleUserIconClick}>{this.props.currentUser.fname[0]}</div>
             {
               this.props.dropdown === "NavbarUserDropdown" &&
               <NavbarUserDropdownContainer />
