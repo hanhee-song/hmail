@@ -23,9 +23,10 @@ class NavbarTop extends React.Component {
           </Link>
         </div>
         <div className="navbar-top-right">
-          <div className="navbar-top-search">
-            Searchbar
-          </div>
+          <form className="navbar-top-search">
+            <div className="input">input</div>
+            <div className="button"><i className="fa fa-search"></i></div>
+          </form>
           <div className="navbar-top-user-options">
             <div className="navbar-top-user-icon"
               onClick={this.handleUserIconClick}>{this.props.currentUser.fname[0]}</div>
