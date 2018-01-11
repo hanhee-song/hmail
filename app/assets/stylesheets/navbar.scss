@@ -1,10 +1,13 @@
+.navbar {
+  font-family: "Roboto", sans-serif;
+}
+
 .navbar-top {
   display: flex;
   justify-content: space-between;
   background-color: rgba(0, 0, 0, .04);
   height: 60px;
-  border-bottom: 1px solid #bbb;
-  font-family: "Roboto", sans-serif;
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
 }
 
 .navbar-top-left {
@@ -20,7 +23,7 @@
   display: inline-block;
 }
 
-.navbar-top-right {
+.navbar-top-right, .navbar-bottom-right {
   display: flex;
   justify-content: space-between;
   padding-right: 30px;
@@ -171,4 +174,29 @@
 
 .user-dropdown-bottom-logout {
   float: right;
+}
+
+// NAVBAR BOTTOM ===========================
+
+.navbar-bottom {
+  display: flex;
+  justify-content: space-between;
+  height: 48px;
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.navbar-bottom-left {
+  width: 200px;
+}
+
+.navbar-bottom-right {
+  // same styling as .navbar-top-right
+}
+
+.navbar-mail-actions {
+  border: 1px solid red;
+}
+
+.navbar-settings {
+  border: 1px solid red;
 }

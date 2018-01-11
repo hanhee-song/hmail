@@ -3,7 +3,13 @@ import React from 'react';
 class NavbarBottom extends React.Component {
   render () {
     return (
-      <div>This is navbar bottom</div>
+      <div className="navbar-bottom">
+        <div className="navbar-bottom-left"></div>
+        <div className="navbar-bottom-right">
+          <div className="navbar-mail-actions"></div>
+          <div className="navbar-settings"></div>
+        </div>
+      </div>
     );
   }
 }
