@@ -1,6 +1,10 @@
 import React from 'react';
 
 class NavbarBottom extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   render () {
     return (
       <div className="navbar-bottom">
