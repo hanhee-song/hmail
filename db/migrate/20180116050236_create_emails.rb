@@ -3,7 +3,7 @@ class CreateEmails < ActiveRecord::Migration[5.1]
     create_table :emails do |t|
       t.string :subject
       t.string :body
-      t.integer :sender_id
+      t.integer :sender_id, null: false
       
       t.timestamps
     end

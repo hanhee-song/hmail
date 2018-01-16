@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20180116051000) do
   create_table "emails", force: :cascade do |t|
     t.string "subject"
     t.string "body"
-    t.integer "sender_id"
+    t.integer "sender_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
