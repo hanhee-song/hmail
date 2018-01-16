@@ -10,10 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171216180850) do
+ActiveRecord::Schema.define(version: 20180116051000) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "email_tags", force: :cascade do |t|
+    t.integer "recipient_id", null: false
+    t.integer "email_id", null: false
+    t.boolean "read", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["email_id"], name: "index_email_tags_on_email_id"
+    t.index ["recipient_id"], name: "index_email_tags_on_recipient_id"
+  end
+
+  create_table "emails", force: :cascade do |t|
+    t.string "subject"
+    t.string "body"
+    t.integer "sender_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", null: false

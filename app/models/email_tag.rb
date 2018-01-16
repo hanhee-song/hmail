@@ -1,0 +1,2 @@
+class EmailTag < ApplicationRecord
+end
