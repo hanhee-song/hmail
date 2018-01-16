@@ -6,6 +6,22 @@ class User < ApplicationRecord
   
   attr_reader :password
   
+  has_many :sent_emails,
+    foreign_key: :sender_id,
+    class_name: :Email
+  
+  # has_many :messaged_people,
+  #   through: :sent_emails,
+  #   source: :recipients
+  
+  has_many :email_tags,
+    foreign_key: :recipient_id,
+    class_name: :EmailTag
+  
+  has_many :received_emails,
+    through: :email_tags,
+    source: :email
+  
   after_initialize :ensure_token
   
   def self.find_by_credentials(email, password)
