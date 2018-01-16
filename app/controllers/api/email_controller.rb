@@ -13,6 +13,14 @@ class Api::EmailController < ApplicationController
     end
   end
   
+  def show
+    @email = Email.find(params[:id])
+  end
+  
+  def index
+    @emails = current_user.received_emails
+  end
+  
   private
   
   def email_params
