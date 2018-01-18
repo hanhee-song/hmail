@@ -143,7 +143,7 @@ class Signin extends React.Component {
     });
     setTimeout(() => {
       this.props.login({
-        email: this.state.email,
+        email: this.state.email.split("@")[0],
         password: this.state.password
       });
     }, 0);
