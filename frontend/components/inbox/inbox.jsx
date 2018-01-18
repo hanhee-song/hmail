@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from './navbar/navbar';
-import Sidebar from './sidebar/sidebar';
+import SidebarContainer from './sidebar/sidebar_container';
+import MessageIndexContainer from './message/message_index_container';
 
 class Inbox extends React.Component {
   componentWillUnmount() {
@@ -9,9 +10,12 @@ class Inbox extends React.Component {
   
   render () {
     return (
-      <div className="inbox-main">
+      <div className="hmail-main">
         <Navbar />
-        <Sidebar />
+        <div className="inbox-main">
+          <SidebarContainer />
+          <MessageIndexContainer />
+        </div>
       </div>
     );
   }

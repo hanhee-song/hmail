@@ -1,0 +1,10 @@
+.inbox-main {
+  height: calc(100% - 108px);
+  display: flex;
+}
+
+.message-index {
+  border: 1px solid blue;
+  height: 100%;
+  width: calc(100% - 200px);
+}
